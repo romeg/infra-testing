@@ -9,12 +9,12 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>Test your Infrastructure!</h1>
+		<p>Yours Truly, Cxense Inc.</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+		<h2>Test your Infrastructure!</h2>
+		<p>Brought to you by <a href="http://maks.me">Maxim Oreshek</a></p>
 		<img src="pictures/cover.jpg" alt="" class="cover">
 		<!--
 			To apply styles to the certain slides
@@ -40,137 +40,193 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Shower key features</h2>
+		<h2>WAT?</h2>
 		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
+			<li>Why we need to test Infrastructure?</li>
+			<li>Types of tests</li>
+			<li>How to test <strike>Infrastructure</strike> Puppet?</li>
+			<li>Ruby... Oh, wait!</li>
+			<li>Static analysis: Linting, compiling </li>
+			<li>Unit: Puppet-rspec</li>
+			<li>Acceptance: Beaker</li>
+			<li>Circus on CI</li>
 		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+
 	</section>
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</section>
-	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-	</section>
-	<section class="slide">
-		<h2>All kind of lists</h2>
+		<h2>Environment provisioning approaches:</h2>
 		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
+			<li>Manual </li>
+			<li>Documentation driven </li>
+			<li>Scripted </li>
 		</ol>
 	</section>
 	<section class="slide">
-		<h2>Serious citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
+		<h2>Manual provisioning</h2>
+		<p>Some teams manually install and configure resources required to create an environment. The problem is that it usually takes days, weeks, or months to get an environment into the desired state. Over this period of time, team members might come and go or forget the precise steps, making it impossible for any one person to re-create the environments as intended.</p>
 	</section>
 	<section class="slide">
-		<h2>Code samples</h2>
+		<h2>Documentation driven provisioning</h2>
+		<p>Other teams try to document each and every step for provisioning environments. Although this is a noble effort and much better than not documenting the process, the documentation is quickly outdated, incorrect, or not run as specified (that is, subject to human error). For these and other reasons, I do not recommend documentation as the source of record for creating environments, but it can be a first step in a systematic approach to provisioning and testing environments.
+		</p>
+	</section>
+	<section class="slide">
+		<h2>Scripted provisioning</h2>
+		<p>Some teams have been "burned" by previous teams that manually installed or documented everything. Determined to learn from their mistakes, they automate the infrastructure provisioning using a collection of scripts. Months later, while mired in myriad custom shell and other scripts, they decide that the environments proved to be too difficult to automate successfully.
+		</p>
+	</section>
+	<section class="slide">
+		<h2>Troubles:</h2>
+		<ol>
+			<li>Impossible simultaneous changes</li>
+			<li>Codebase fragile and complex</li>
+			<li>Imposible to predict consequence of changes</li>
+			<li>Multiplie ways to production</li>
+		</ol>		
+	</section>
+	<section class="slide">
+		<h2>Now what?</h2>
+		<p>We will escape these antipatterns by using a test-driven approach coupled with the use of mature infrastructure automation tools, as part of a single path to production.</p>
+	</section>	
+	<section class="slide">
+		<h2>Test driven approach:</h2>
+		<ol>
+			<li>Automation is a code</li>
+			<li>Versioned</li>
+			<li>Proved</li>
+			<li>Continuous process</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>Types of tests:</h2>
+		<ol>
+			<li>Syntax</li>
+			<li>Unit</li>
+			<li>Acceptance and integration</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>How to test Puppet:</h2>
+		<ol>
+			<li>Syntax: Puppet-syntax, Puppet-lint</li>
+			<li>Unit: Puppet-rspec</li>
+			<li>Acceptance and integration: Beaker (InSpec, Test Kitchen)</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>Ruby... Oh, wait!</h2>
+		<p>You should know a little(I promise!) of Ruby things:</p>
+		<ol>
+			<li>Bundler - dependency manager (npm)</li>
+			<li>Gem/Gemfile - module (node module)</li>
+			<li>Rake/Rakefile - building automation (grunt build)</li>
+			<li>Syntax (very easy)</li>
+			<li>Every test - DSL with Ruby code support</li>
+		</ol>
+	</section>
+
+
+	<section class="slide">
+		<h2>Syntax checks</h2>
+		<p>Static code analysis, aimed to find syntax and prevent mistakes in code:</p>
 		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+			<code>class { 'very'$bad:</code>
+			<code>   type => custom,</code>
+			<code>   mode     => '755',</code>
+			<code>   test    => true</code>
+			<code> overwrite    => "Строка </code>
+			<code> с переносом 8("</code>
+			<code>}</code>
 		</pre>
 	</section>
 	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</section>
-	<section class="slide" id="picture">
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="" class="cover">
-		<style>
-			#picture h2 {
-				color:#FFF;
-				}
-		</style>
+		<h2>Syntax checks: Style guide</h2>
+		
+		<pre>
+			<code>class { "very ${bad}":</code>
+			<code>   type      => 'custom',</code>
+			<code>   mode      => 755,</code>
+			<code>   test      => true,</code>
+			<code>   overwrite => $strange_row </code>
+			<code>}</code>
+		</pre>
 	</section>
 	<section class="slide">
-		<h2 class="shout shrink">You can even shout this way</h2>
+		<h2>Syntax checks: Gemfile</h2>
+		<pre>
+			<code>source ENV['GEM_SOURCE'] || "https://rubygems.org" </code>
+
+			<code>group :test do </code>
+  			<code> gem "rake" </code>
+  			<code> gem "puppet", '~> 4.6.0' </code>
+  			<code> gem "rspec", '3.3.0' </code>
+  			<code> gem "rspec-puppet", :git=>'https://github.com/rodjek/rspec-puppet.git'</code>
+  			<code> gem "puppetlabs_spec_helper"	</code>
+  			<code>end </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Syntax checks: Rakefile</h2>
+		<pre>
+			<code>require 'puppetlabs_spec_helper/rake_tasks'</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Syntax checks: Run!</h2>		
+		<pre>
+			<code># bundle exec rake lint</code>
+			<code>./init.pp - ERROR: two-space soft tabs not used on line 7</code>
+			<code>./init.pp - ERROR: two-space soft tabs not used on line 8</code>
+			<code>./init.pp - ERROR: two-space soft tabs not used on line 9</code>
+			<code>./init.pp - ERROR: two-space soft tabs not used on line 10</code>
+			<code>...</code>
+			<code>Total: 48 Errors</code>
+		</pre>
 	</section>
 	<section class="slide">
-		<h2>Inner navigation</h2>
+		<h2>Syntax checks: Go fix yourself!</h2>		
+		<pre>
+			<code># bundle exec rake lint -f</code>
+		</pre>
+		<p class="note">Don't forget to check changes!</p>
+	</section>
+
+	<section class="slide">
+		<h2>Unit checks</h2>
+		<p>Checks smallest pieces of code. For example, you are sure that for application needed user with specific name, so test will be looks like:</p>		
+		<pre>
+			<code>describe 'mxf_example' do</code>
+			<code> context 'system user and group is present' do</code>
+            <code>  is_expected.to contain_user('example').with('ensure'=>'present')</code>
+            <code> end</code>
+            <code>end</code>
+		</pre>
+		<p class="note">For full code example see: mxf_example module.</p>
+	</section>
+	<section class="slide">
+		<h2>Unit checks: Puppet-retrospec</h2>
+		<p>Special thanks for implementation of <a href="https://github.com/nwops/puppet-retrospec">Puppet-Retrospec</a></p>
+	</section>		
+	<section class="slide">
+		<h2>Acceptance checks</h2>
 		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
+			<li>Provision VM</li>
+			<li>Apply code</li>
+			<li>Checks real result</li>
 		</ol>
 	</section>
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
+	<section class="slide">
+		<h2>Acceptance checks: Frameworks</h2>
+		<ol>
+			<li>Beaker: All in One</li>
+			<li>InSpec + Test Kitchen</li>
+			<li>Testinfra</li>
+			<li>...</li>
+		</ol>
 	</section>
-	<section class="slide" id="see-more">
-		<h2 class="shout">
-			<img src="pictures/logo.svg" alt="Shower logo">
-			<a href="https://github.com/shower/shower">See more on GitHub</a>
-		</h2>
-		<style>
-			#see-more h2 {
-				font-size:100px
-				}
-			#see-more img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
-	</section>
+
 	<p class="badge">
 		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
 	</p>
