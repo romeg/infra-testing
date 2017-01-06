@@ -132,9 +132,9 @@
 		<p>Static code analysis, aimed to find syntax and prevent mistakes in code:</p>
 		<pre>
 			<code>class { 'very'$bad:</code>
-			<code>   type => custom,</code>
+			<code>    type => custom,</code>
 			<code>   mode     => '755',</code>
-			<code>   test    => true</code>
+			<code>      test    => true</code>
 			<code> overwrite    => "Строка </code>
 			<code> с переносом 8("</code>
 			<code>}</code>
@@ -233,7 +233,7 @@
 		<ol>
 			<li>Batteries included</li>
 			<li>VM provisioning</li>
-			<li>Multi VM testing!</li>
+			<li>Multi VM and OS testing!</li>
 			<li>Still alive and supported</li>
 		</ol>
 	</section>
@@ -244,10 +244,22 @@
     		<code> context "on #{os}:" do</code>
       		<code>  let(:server){ only_host_with_role( hosts, "#{os}-server" ) }</code>
         	<code>  it 'should configure #{os}-server with no errors' do</code>
-          	<code>    apply_manifest_on(server, server_manifest, :expect_changes => true)</code>
+          	<code>    apply_manifest_on(server, server_manifest)</code>
         	<code>  end </code>
         	<code>end</code>
-
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Acceptance checks: Beaker</h2>
+		<pre>
+  			<code>['ubuntu'].each do |os|</code>
+    		<code> context "on #{os}:" do</code>
+      		<code>  let(:server){ only_host_with_role( hosts, "#{os}-server" ) }</code>
+        	<code>  it 'should configure #{os}-server with no errors' do</code>
+          	<code>   apply_manifest_on(server, server_manifest, </code>
+          	<code>                                  :expect_changes => false)</code>
+        	<code>  end </code>
+        	<code>end</code>
 		</pre>
 	</section>
 	<p class="badge">
