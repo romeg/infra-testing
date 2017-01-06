@@ -244,7 +244,7 @@
     		<code> context "on #{os}:" do</code>
       		<code>  let(:server){ only_host_with_role( hosts, "#{os}-server" ) }</code>
         	<code>  it 'should configure #{os}-server with no errors' do</code>
-          	<code>    apply_manifest_on(server, server_manifest)</code>
+          	<code>   apply_manifest_on(server, server_manifest)</code>
         	<code>  end </code>
         	<code>end</code>
 		</pre>
@@ -262,9 +262,16 @@
         	<code>end</code>
 		</pre>
 	</section>
+	<section>
+		<h2 class="shout">
+			Thank you!
+		</h2>
+	</section>
+	<!--
 	<p class="badge">
 		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
 	</p>
+	-->
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
