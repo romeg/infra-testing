@@ -95,6 +95,7 @@
 			<li>Versioned</li>
 			<li>Proved</li>
 			<li>Continuous process</li>
+			<li>Earliest complexity detector</li>
 		</ol>
 	</section>
 	<section class="slide">
@@ -103,14 +104,6 @@
 			<li>Syntax</li>
 			<li>Unit</li>
 			<li>Acceptance and integration</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<h2>How to test Puppet:</h2>
-		<ol>
-			<li>Syntax: Puppet-syntax, Puppet-lint</li>
-			<li>Unit: Puppet-rspec</li>
-			<li>Acceptance and integration: Beaker (InSpec, Test Kitchen)</li>
 		</ol>
 	</section>
 	<section class="slide">
@@ -124,7 +117,15 @@
 			<li>Every test - DSL with Ruby code support</li>
 		</ol>
 	</section>
-
+	<section class="slide">
+		<h2>How to test Puppet:</h2>
+		<ol>
+			<li>Syntax: Puppet-syntax, Puppet-lint</li>
+			<li>Unit: Puppet-rspec</li>
+			<li>Acceptance and integration: Beaker </li>
+		</ol>
+		<p class="note">This is a list of gems, actually</p>
+	</section>
 
 	<section class="slide">
 		<h2>Syntax checks</h2>
@@ -215,18 +216,40 @@
 			<li>Provision VM</li>
 			<li>Apply code</li>
 			<li>Checks real result</li>
+			<li>Idempotency checks</li>
 		</ol>
 	</section>
 	<section class="slide">
 		<h2>Acceptance checks: Frameworks</h2>
 		<ol>
-			<li>Beaker: All in One</li>
+			<li>Beaker: All in one</li>
 			<li>InSpec + Test Kitchen</li>
 			<li>Testinfra</li>
 			<li>...</li>
 		</ol>
 	</section>
+	<section class="slide">
+		<h2>Acceptance checks: Beaker</h2>
+		<ol>
+			<li>Batteries included</li>
+			<li>VM provisioning</li>
+			<li>Multi VM testing!</li>
+			<li>Still alive and supported</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>Acceptance checks: Beaker</h2>
+		<pre>
+  			<code>['ubuntu'].each do |os|</code>
+    		<code> context "on #{os}:" do</code>
+      		<code>  let(:server){ only_host_with_role( hosts, "#{os}-server" ) }</code>
+        	<code>  it 'should configure #{os}-server with no errors' do</code>
+          	<code>    apply_manifest_on(server, server_manifest, :expect_changes => true)</code>
+        	<code>  end </code>
+        	<code>end</code>
 
+		</pre>
+	</section>
 	<p class="badge">
 		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
 	</p>
